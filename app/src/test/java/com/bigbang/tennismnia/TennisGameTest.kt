@@ -50,7 +50,7 @@ class TennisGameTest {
         //put player two in the lead
         tennisGame.playerTwo.gamePoints++
         assertEquals(
-            "Player Two is leading by ${tennisGame.playerOne.gamePoints - tennisGame.playerTwo.gamePoints} points",
+            "Player Two is leading by ${tennisGame.playerTwo.gamePoints - tennisGame.playerOne.gamePoints} points",
             tennisGame.getGameStatus()
         )
     }

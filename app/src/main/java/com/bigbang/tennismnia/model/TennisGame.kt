@@ -9,7 +9,7 @@ open class TennisGame(var playerOne: TennisPlayer, var playerTwo: TennisPlayer) 
     fun getGameStatus(): String {
         return when {
             playerOne.gamePoints > playerTwo.gamePoints -> "Player One is leading by ${playerOne.gamePoints - playerTwo.gamePoints} points"
-            playerOne.gamePoints > playerTwo.gamePoints -> "Player Two is leading by ${playerOne.gamePoints - playerTwo.gamePoints} points"
+            playerTwo.gamePoints > playerOne.gamePoints -> "Player Two is leading by ${playerTwo.gamePoints - playerOne.gamePoints} points"
             else -> "Game is at a TIE"
         }
     }
