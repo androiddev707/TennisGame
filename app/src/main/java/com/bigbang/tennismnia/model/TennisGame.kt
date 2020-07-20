@@ -2,7 +2,7 @@ package com.bigbang.tennismnia.model
 
 import java.util.concurrent.atomic.AtomicInteger
 
-data class TennisGame(var playerOne: TennisPlayer, var playerTwo: TennisPlayer) {
+open class TennisGame(var playerOne: TennisPlayer, var playerTwo: TennisPlayer) {
 
     var gameTurn: AtomicInteger = AtomicInteger(0)
 
