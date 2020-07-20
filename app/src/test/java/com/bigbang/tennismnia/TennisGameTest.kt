@@ -4,11 +4,7 @@ import com.bigbang.tennismnia.model.TennisGame
 import com.bigbang.tennismnia.model.TennisPlayer
 import junit.framework.Assert.assertEquals
 import org.junit.Assert.assertNotEquals
-import org.junit.Before
 import org.junit.Test
-import org.mockito.Mock
-import org.mockito.Mockito
-import org.mockito.MockitoAnnotations
 
 class TennisGameTest {
     private val tennisPlayer1 = TennisPlayer("Player One", 0)
@@ -53,6 +49,34 @@ class TennisGameTest {
             "Player Two is leading by ${tennisGame.playerTwo.gamePoints - tennisGame.playerOne.gamePoints} points",
             tennisGame.getGameStatus()
         )
+    }
+
+    @Test
+    fun `test on point addition system`(){
+        //Test on player one
+        tennisGame.playerOne.gamePoints = 0
+        assertEquals("LOVE", tennisGame.playerOne.getScore())
+        tennisGame.playerOne.gamePoints = 1
+        assertEquals("15", tennisGame.playerOne.getScore())
+        tennisGame.playerOne.gamePoints = 2
+        assertEquals("30", tennisGame.playerOne.getScore())
+        tennisGame.playerOne.gamePoints = 3
+        assertEquals("40", tennisGame.playerOne.getScore())
+        tennisGame.playerOne.gamePoints = 4
+        assertEquals("GAME", tennisGame.playerOne.getScore())
+
+        //Test on player twi
+        tennisGame.playerTwo.gamePoints = 0
+        assertEquals("LOVE", tennisGame.playerTwo.getScore())
+        tennisGame.playerTwo.gamePoints = 1
+        assertEquals("15", tennisGame.playerTwo.getScore())
+        tennisGame.playerTwo.gamePoints = 2
+        assertEquals("30", tennisGame.playerTwo.getScore())
+        tennisGame.playerTwo.gamePoints = 3
+        assertEquals("40", tennisGame.playerTwo.getScore())
+        tennisGame.playerTwo.gamePoints = 4
+        assertEquals("GAME", tennisGame.playerTwo.getScore())
+
     }
 
 }
