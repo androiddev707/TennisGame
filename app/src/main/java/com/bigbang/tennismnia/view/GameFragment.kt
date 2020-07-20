@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.bigbang.tennismnia.R
+import com.bigbang.tennismnia.StringUtil.toMinutes
 import com.bigbang.tennismnia.model.TennisPlayer
 import com.bigbang.tennismnia.viewmodel.TennisViewModel
 import com.bigbang.tennismnia.viewmodel.TennisViewModelFactory
@@ -70,6 +71,15 @@ class GameFragment : Fragment() {
                     matchTurnToast()
             }
         })
+        exit_game_button.setOnClickListener {
+            closeGame()
+        }
+
+        reset_game_button.setOnClickListener {
+            tennisViewModel.startGame()
+            gameTime = 0
+        }
+
     }
 
     private fun matchTurnToast() {
@@ -77,10 +87,7 @@ class GameFragment : Fragment() {
     }
 
     private fun updateTimer() {
-
-        val seconds = gameTime % 60
-        val minutes = (gameTime / 60) % 60
-        game_timer_textview.text = "$minutes:$seconds"
+        game_timer_textview.text = gameTime.toMinutes()
         gameTime++
     }
 
@@ -91,11 +98,15 @@ class GameFragment : Fragment() {
             .setCancelable(false)
             .setNegativeButton(getString(R.string.close_text)) { dialog, _ ->
                 dialog.dismiss()
-                handler.removeCallbacksAndMessages(null)
-                (context as HomeActivity).closeGame()
+                closeGame()
             }
             .create()
             .show()
+    }
+
+    private fun closeGame() {
+        handler.removeCallbacksAndMessages(null)
+        (context as HomeActivity).closeGame()
     }
 
 }
