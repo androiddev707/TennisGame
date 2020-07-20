@@ -1,6 +1,7 @@
 package com.bigbang.tennismnia.view
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.bigbang.tennismnia.R
@@ -20,6 +21,7 @@ class HomeActivity : AppCompatActivity() {
         start_game_button.setOnClickListener {
             tennisViewModel.startGame()
             openGameFragment()
+            start_game_button.visibility = View.GONE
         }
     }
 
