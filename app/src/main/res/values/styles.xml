@@ -7,6 +7,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-
+    <style name="MainButtonBg">
+        <item name="android:background">@drawable/main_button_bg</item>
+        <item name="android:textColor">@color/appColorWhite</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 
 </resources>
