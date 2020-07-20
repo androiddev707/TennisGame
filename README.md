@@ -5,7 +5,7 @@
 
 <image src="screenshots/screen_3.png" width="250">
 
-##General Information
+### General Information
 - A simple couting machine for tennis game. 
 
 ### Features
