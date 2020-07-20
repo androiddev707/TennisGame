@@ -108,4 +108,8 @@ class GameFragment : Fragment() {
         (context as HomeActivity).closeGame()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        handler.removeCallbacksAndMessages(null)
+    }
 }
