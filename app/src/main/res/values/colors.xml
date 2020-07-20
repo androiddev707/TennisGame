@@ -5,4 +5,5 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="appColorBlue">#0099FF</color>
     <color name="appColorWhite">#FFFFFF</color>
+    <color name="appColorGrey">#E8E8E8</color>
 </resources>

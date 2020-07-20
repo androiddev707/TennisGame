@@ -6,6 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+    <ImageView
+        android:id="@+id/tennis_ball_imageview"
+        android:layout_width="@dimen/dimen_48dp"
+        android:layout_height="@dimen/dimen_48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="@dimen/dimen_16dp"
+        app:srcCompat="@drawable/ic_tennis_icon" />
+
+    <FrameLayout
+        android:id="@+id/game_frame"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/start_game_button"
+        app:layout_constraintTop_toBottomOf="@id/tennis_ball_imageview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
     <Button
         style="@style/MainButtonBg"
         android:id="@+id/start_game_button"
@@ -16,4 +35,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="@dimen/dimen_16dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
