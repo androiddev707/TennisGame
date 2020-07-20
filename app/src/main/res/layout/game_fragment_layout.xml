@@ -68,6 +68,7 @@
                 tools:text="Player One Header" />
 
             <TextView
+                android:id="@+id/player_one_score_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/dimen_16dp"
@@ -116,6 +117,7 @@
                 tools:text="Player Two Header" />
 
             <TextView
+                android:id="@+id/player_two_score_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/dimen_16dp"
@@ -142,13 +144,12 @@
         android:id="@+id/game_timer_textview"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/player_two_cardview"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="00:23"
         android:layout_margin="@dimen/dimen_16dp"
+        android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textAlignment="center"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/player_two_cardview"
+        tools:text="00:23" />
 </androidx.constraintlayout.widget.ConstraintLayout>
