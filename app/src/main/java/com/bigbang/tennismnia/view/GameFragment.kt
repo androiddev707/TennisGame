@@ -79,7 +79,6 @@ class GameFragment : Fragment() {
             tennisViewModel.startGame()
             gameTime = 0
         }
-
     }
 
     private fun matchTurnToast() {

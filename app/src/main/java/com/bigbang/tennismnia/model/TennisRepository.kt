@@ -13,7 +13,7 @@ object TennisRepository {
     }
 
     fun startGame() {
-        gameInstance = TennisGame(TennisPlayer("PlayerOne", 0), TennisPlayer("PlayerOne", 0))
+        gameInstance = TennisGame(TennisPlayer("PlayerOne", 0), TennisPlayer("PlayerTwo", 0))
         gameState.value = gameInstance
     }
 
