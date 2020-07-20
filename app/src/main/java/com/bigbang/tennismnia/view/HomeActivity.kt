@@ -1,9 +1,10 @@
-package com.bigbang.tennismnia
+package com.bigbang.tennismnia.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.bigbang.tennismnia.R
 
-class MainActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

@@ -1,10 +1,11 @@
-package com.bigbang.tennismnia
+package com.bigbang.tennismnia.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.bigbang.tennismnia.R
 
 class GameFragment : Fragment() {
 
