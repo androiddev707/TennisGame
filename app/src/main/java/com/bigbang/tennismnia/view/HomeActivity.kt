@@ -22,6 +22,7 @@ class HomeActivity : AppCompatActivity() {
             tennisViewModel.startGame()
             openGameFragment()
             start_game_button.visibility = View.GONE
+            new_game_textview.visibility = View.GONE
         }
     }
 
@@ -37,11 +38,12 @@ class HomeActivity : AppCompatActivity() {
             .commit()
     }
 
-    fun closeGame(){
+    fun closeGame() {
 
         supportFragmentManager.beginTransaction()
             .remove(gameFragment)
             .commit()
         start_game_button.visibility = View.VISIBLE
+        new_game_textview.visibility = View.VISIBLE
     }
 }
