@@ -8,6 +8,7 @@ object TennisViewModelFactory : ViewModelProvider.Factory {
 
     private val tennisViewModel: TennisViewModel = TennisViewModel(TennisRepository)
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        @Suppress("UNCHECKED_CAST")
         return tennisViewModel as T
     }
 }
