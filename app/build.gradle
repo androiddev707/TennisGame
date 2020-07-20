@@ -23,6 +23,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        targetCompatibility "1.8"
+        sourceCompatibility "1.8"
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
 }
 
 dependencies {
@@ -38,6 +47,10 @@ dependencies {
 
     //Lifecycle Extensions
     implementation "android.arch.lifecycle:extensions:1.1.1"
+
+    implementation "androidx.activity:activity-ktx:1.1.0"
+
+    implementation 'androidx.fragment:fragment-ktx:1.2.5'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
