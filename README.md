@@ -33,7 +33,7 @@ to have approximately 40% lesser code to do similar job and aim to elimate so ca
 Test Driven Development Approach was used as per requirement : RED, GREEN, REFACTOR. 
 
 
-### To DO
+### future upgrades
 Include more test cases to imporve the rubustness of the game.
 
 Add Animation UI visibility to give the user better understanding of the App. 
