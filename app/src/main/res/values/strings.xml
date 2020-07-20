@@ -7,4 +7,6 @@
     <string name="winner_title">We have a winner!</string>
     <string name="close_text">Close</string>
     <string name="start_a_new_game_text">Start a new game</string>
+    <string name="reset_game_text">Reset Game</string>
+    <string name="exit_game_text">Exit Game</string>
 </resources>
