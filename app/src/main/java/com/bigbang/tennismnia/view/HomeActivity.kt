@@ -39,8 +39,13 @@ class HomeActivity : AppCompatActivity() {
     }
 
     fun closeGame() {
-
         supportFragmentManager.beginTransaction()
+            .setCustomAnimations(
+                android.R.anim.slide_in_left,
+                android.R.anim.slide_out_right,
+                android.R.anim.slide_in_left,
+                android.R.anim.slide_out_right
+            )
             .remove(gameFragment)
             .commit()
         start_game_button.visibility = View.VISIBLE
