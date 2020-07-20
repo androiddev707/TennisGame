@@ -7,6 +7,7 @@ import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -44,24 +45,34 @@ class GameFragment : Fragment() {
             player_two_score_textview.text = tennisGame.playerTwo.getScore()
 
             player_one_button.setOnClickListener { view ->
-                tennisGame.playerOne.gamePoints++
-                lead_player_text.text = tennisGame.getGameStatus()
-                player_one_score_textview.text = tennisGame.playerOne.getScore()
+                if (tennisGame.gameTurn.getAndSet(1) == 0) {
+                    tennisGame.playerOne.gamePoints++
+                    lead_player_text.text = tennisGame.getGameStatus()
+                    player_one_score_textview.text = tennisGame.playerOne.getScore()
 
-                if (tennisGame.playerOne.gamePoints == 4)
-                    showGameWonDialog(tennisGame.playerOne)
+                    if (tennisGame.playerOne.gamePoints == 4)
+                        showGameWonDialog(tennisGame.playerOne)
+                } else
+                    matchTurnToast()
             }
 
             player_two_button.setOnClickListener { view ->
-                tennisGame.playerTwo.gamePoints++
-                lead_player_text.text = tennisGame.getGameStatus()
-                player_two_score_textview.text = tennisGame.playerTwo.getScore()
+                if (tennisGame.gameTurn.getAndSet(0) == 1) {
+                    tennisGame.playerTwo.gamePoints++
+                    lead_player_text.text = tennisGame.getGameStatus()
+                    player_two_score_textview.text = tennisGame.playerTwo.getScore()
 
 
-                if (tennisGame.playerTwo.gamePoints == 4)
-                    showGameWonDialog(tennisGame.playerTwo)
+                    if (tennisGame.playerTwo.gamePoints == 4)
+                        showGameWonDialog(tennisGame.playerTwo)
+                } else
+                    matchTurnToast()
             }
         })
+    }
+
+    private fun matchTurnToast() {
+        Toast.makeText(context, "It is not your turn", Toast.LENGTH_SHORT).show()
     }
 
     private fun updateTimer() {

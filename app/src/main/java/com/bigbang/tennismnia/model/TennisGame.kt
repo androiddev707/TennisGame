@@ -1,8 +1,10 @@
 package com.bigbang.tennismnia.model
 
+import java.util.concurrent.atomic.AtomicInteger
+
 data class TennisGame(var playerOne: TennisPlayer, var playerTwo: TennisPlayer) {
 
-    var gameTurn = 0
+    var gameTurn: AtomicInteger = AtomicInteger(0)
 
     fun getGameStatus(): String {
         return when {
