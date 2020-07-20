@@ -3,4 +3,6 @@
     <string name="start_game_text">Start Game</string>
     <string name="player_one_text">Player One</string>
     <string name="play_text">Play</string>
+    <string name="won_the_game">%s won the Game!</string>
+    <string name="winner_title">We have a winner!</string>
 </resources>

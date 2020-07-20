@@ -1,8 +1,9 @@
 package com.bigbang.tennismnia.view
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
+import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.bigbang.tennismnia.R
+import com.bigbang.tennismnia.model.TennisPlayer
 import com.bigbang.tennismnia.viewmodel.TennisViewModel
 import com.bigbang.tennismnia.viewmodel.TennisViewModelFactory
 import kotlinx.android.synthetic.main.game_fragment_layout.*
@@ -45,24 +47,36 @@ class GameFragment : Fragment() {
                 tennisGame.playerOne.gamePoints++
                 lead_player_text.text = tennisGame.getGameStatus()
                 player_one_score_textview.text = tennisGame.playerOne.getScore()
+
+                if (tennisGame.playerOne.gamePoints == 4)
+                    showGameWonDialog(tennisGame.playerOne)
             }
 
             player_two_button.setOnClickListener { view ->
                 tennisGame.playerTwo.gamePoints++
                 lead_player_text.text = tennisGame.getGameStatus()
                 player_two_score_textview.text = tennisGame.playerTwo.getScore()
+
+
+                if (tennisGame.playerTwo.gamePoints == 4)
+                    showGameWonDialog(tennisGame.playerTwo)
             }
-
-
         })
     }
 
     private fun updateTimer() {
         gameTime++
         val seconds = gameTime % 60
-        val minutes = (gameTime /60) % 60
+        val minutes = (gameTime / 60) % 60
         game_timer_textview.text = "$minutes:$seconds"
     }
 
+    private fun showGameWonDialog(winner: TennisPlayer) {
+        AlertDialog.Builder(ContextThemeWrapper(context, R.style.AppTheme))
+            .setTitle(getString(R.string.winner_title))
+            .setMessage(getString(R.string.won_the_game, winner.playerName))
+            .create()
+            .show()
+    }
 
 }
