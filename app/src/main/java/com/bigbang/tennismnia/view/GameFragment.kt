@@ -21,7 +21,7 @@ class GameFragment : Fragment() {
 
     private var gameTime = 0
     private val tennisViewModel: TennisViewModel by viewModels(factoryProducer = { TennisViewModelFactory })
-
+    private var handler = Handler()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -31,7 +31,7 @@ class GameFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val handler = Handler()
+
         handler.postDelayed(object : Runnable {
             override fun run() {
                 updateTimer()
@@ -40,6 +40,7 @@ class GameFragment : Fragment() {
         }, 0)
 
         tennisViewModel.getGameData().observe(viewLifecycleOwner, Observer { tennisGame ->
+            gameTime = 0
             lead_player_text.text = tennisGame.getGameStatus()
             player_one_score_textview.text = tennisGame.playerOne.getScore()
             player_two_score_textview.text = tennisGame.playerTwo.getScore()
@@ -76,16 +77,23 @@ class GameFragment : Fragment() {
     }
 
     private fun updateTimer() {
-        gameTime++
+
         val seconds = gameTime % 60
         val minutes = (gameTime / 60) % 60
         game_timer_textview.text = "$minutes:$seconds"
+        gameTime++
     }
 
     private fun showGameWonDialog(winner: TennisPlayer) {
         AlertDialog.Builder(ContextThemeWrapper(context, R.style.AppTheme))
             .setTitle(getString(R.string.winner_title))
             .setMessage(getString(R.string.won_the_game, winner.playerName))
+            .setCancelable(false)
+            .setNegativeButton(getString(R.string.close_text)) { dialog, _ ->
+                dialog.dismiss()
+                handler.removeCallbacksAndMessages(null)
+                (context as HomeActivity).closeGame()
+            }
             .create()
             .show()
     }

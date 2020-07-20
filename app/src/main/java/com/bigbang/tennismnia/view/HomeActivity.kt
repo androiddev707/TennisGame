@@ -33,7 +33,15 @@ class HomeActivity : AppCompatActivity() {
                 android.R.anim.slide_in_left,
                 android.R.anim.slide_out_right
             )
-            .replace(R.id.game_frame, gameFragment)
+            .add(R.id.game_frame, gameFragment)
             .commit()
+    }
+
+    fun closeGame(){
+
+        supportFragmentManager.beginTransaction()
+            .remove(gameFragment)
+            .commit()
+        start_game_button.visibility = View.VISIBLE
     }
 }
