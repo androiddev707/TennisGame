@@ -16,7 +16,7 @@ class TennisGameTest {
     private val tennisGame = TennisGame(tennisPlayer1, tennisPlayer2)
 
     @Test
-    fun `test initial state of game, Make sure score is initially zero`(){
+    fun `test initial state of game, Make sure score is initially zero`() {
         assertEquals(tennisGame.getGameStatus(), "Game is at a TIE")
 
         assertEquals(tennisGame.playerOne.gamePoints, 0)
@@ -34,13 +34,25 @@ class TennisGameTest {
 
         //Add Points to player one
         tennisGame.playerOne.gamePoints++
-        assertEquals("Player One is leading by ${tennisGame.playerOne.gamePoints - tennisGame.playerTwo.gamePoints} points", tennisGame.getGameStatus())
+        assertEquals(
+            "Player One is leading by ${tennisGame.playerOne.gamePoints - tennisGame.playerTwo.gamePoints} points",
+            tennisGame.getGameStatus()
+        )
+
+        //Make the game tie
+        tennisGame.playerTwo.gamePoints++
+        assertEquals(
+            "Game is at a TIE",
+            tennisGame.getGameStatus()
+        )
 
 
-
-
-
+        //put player two in the lead
+        tennisGame.playerTwo.gamePoints++
+        assertEquals(
+            "Player Two is leading by ${tennisGame.playerOne.gamePoints - tennisGame.playerTwo.gamePoints} points",
+            tennisGame.getGameStatus()
+        )
     }
-
 
 }
